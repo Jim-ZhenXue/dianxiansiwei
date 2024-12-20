@@ -90,3 +90,36 @@ export function drawInfiniteLine(ctx: CanvasRenderingContext2D, start: Point, en
   ctx.stroke();
   ctx.closePath();
 }
+
+export function drawRay(ctx: CanvasRenderingContext2D, start: Point, end: Point) {
+  const canvas = ctx.canvas;
+  const dx = end.x - start.x;
+  const dy = end.y - start.y;
+
+  // If start and end points are the same, just draw a point
+  if (dx === 0 && dy === 0) {
+    drawPoint(ctx, start.x, start.y);
+    return;
+  }
+
+  // Calculate the angle of the ray
+  const angle = Math.atan2(dy, dx);
+
+  // Calculate the maximum distance needed to reach canvas edge
+  const maxDistance = Math.sqrt(
+    Math.pow(canvas.width, 2) + Math.pow(canvas.height, 2)
+  );
+
+  // Calculate the end point that extends beyond canvas bounds
+  const extendedEnd = {
+    x: start.x + Math.cos(angle) * maxDistance,
+    y: start.y + Math.sin(angle) * maxDistance
+  };
+
+  // Draw the ray
+  ctx.beginPath();
+  ctx.moveTo(start.x, start.y);
+  ctx.lineTo(extendedEnd.x, extendedEnd.y);
+  ctx.stroke();
+  ctx.closePath();
+}
