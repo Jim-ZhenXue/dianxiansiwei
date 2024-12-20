@@ -99,6 +99,28 @@ export function useGameState() {
       }
 
       // DIRECTION mode - add point
+      if (prev.mode === 'DIRECTION') {
+        // If we have no points yet, this is the first point
+        if (prev.points.length === 0) {
+          return {
+            ...prev,
+            points: [newPoint]
+          };
+        }
+        // If we have one point, add the second point to create the infinite line
+        if (prev.points.length === 1) {
+          return {
+            ...prev,
+            points: [...prev.points, newPoint]
+          };
+        }
+        // After drawing the infinite line, clicking should only keep the clicked point
+        return {
+          ...prev,
+          points: [newPoint]
+        };
+      }
+
       return {
         ...prev,
         points: [...prev.points, newPoint]
