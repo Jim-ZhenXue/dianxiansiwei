@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.title-gradient {
+  background: linear-gradient(90deg, #f63bca, #e360fa, #93fdf4, #60A5FA, #3B82F6);
+  background-size: 200% auto;
+  animation: gradient 3s ease infinite;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 1.5em;
+  letter-spacing: 0.05em;
+}
