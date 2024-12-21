@@ -36,7 +36,6 @@ export function Game() {
           <GameCanvas 
             gameState={gameState}
             onCanvasClick={handleCanvasClick}
-            onRayRotation={handleRayRotation}
           />
         </div>
       </main>
