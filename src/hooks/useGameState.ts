@@ -12,7 +12,7 @@ export function useGameState() {
     level: 1,
     targetPoint: generateRandomPoint(),
     angle: 0,
-    showGrid: true
+    showGrid: true,
   });
 
   // Ensure target point exists in POINT mode
@@ -69,10 +69,10 @@ export function useGameState() {
             points: [...prev.points, newPoint]
           };
         }
-        // If we already have two points, start over with the new point
+        // If we already have two points, add the new point while keeping existing points
         return {
           ...prev,
-          points: [newPoint]
+          points: [...prev.points, newPoint]
         };
       }
 
@@ -92,10 +92,10 @@ export function useGameState() {
             points: [...prev.points, newPoint]
           };
         }
-        // If we already have two points, start over with the new point
+        // If we already have two points, add the new point while keeping existing points
         return {
           ...prev,
-          points: [newPoint]
+          points: [...prev.points, newPoint]
         };
       }
 
@@ -118,7 +118,7 @@ export function useGameState() {
         // After drawing the infinite line, clicking should only keep the clicked point
         return {
           ...prev,
-          points: [newPoint]
+          points: [...prev.points, newPoint]
         };
       }
 
@@ -154,6 +154,6 @@ export function useGameState() {
     handleCanvasClick,
     handleRayRotation,
     switchMode,
-    toggleGrid
+    toggleGrid,
   };
 }
