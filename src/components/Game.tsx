@@ -5,7 +5,7 @@ import { GameCanvas } from './Canvas/GameCanvas';
 import { useGameState } from '../hooks/useGameState';
 
 export function Game() {
-  const { gameState, handleCanvasClick, handleRayRotation, switchMode } = useGameState();
+  const { gameState, handleCanvasClick, handleRayRotation, switchMode, toggleGrid } = useGameState();
 
   return (
     <div className="h-screen flex flex-col">
@@ -27,6 +27,8 @@ export function Game() {
             onModeChange={switchMode}
             score={gameState.score}
             level={gameState.level}
+            showGrid={gameState.showGrid}
+            onToggleGrid={toggleGrid}
           />
           <Instructions mode={gameState.mode} />
         </div>

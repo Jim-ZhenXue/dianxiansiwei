@@ -11,7 +11,8 @@ export function useGameState() {
     score: 0,
     level: 1,
     targetPoint: generateRandomPoint(),
-    angle: 0
+    angle: 0,
+    showGrid: true
   });
 
   // Ensure target point exists in POINT mode
@@ -140,10 +141,19 @@ export function useGameState() {
     }));
   }, []);
 
+  // Handle grid toggle
+  const toggleGrid = useCallback(() => {
+    setState(prev => ({
+      ...prev,
+      showGrid: !prev.showGrid
+    }));
+  }, []);
+
   return {
     gameState: state,
     handleCanvasClick,
     handleRayRotation,
     switchMode,
+    toggleGrid
   };
 }

@@ -8,8 +8,10 @@ export function drawGameElements(ctx: CanvasRenderingContext2D, gameState: GameS
   // Clear canvas
   ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
-  // Draw grid lines for visual reference
-  drawGrid(ctx);
+  // Draw grid lines only if showGrid is true
+  if (gameState.showGrid) {
+    drawGrid(ctx);
+  }
 
   // Draw target point and spatial markers (if in POINT mode)
   if (gameState.mode === 'POINT' && gameState.targetPoint) {

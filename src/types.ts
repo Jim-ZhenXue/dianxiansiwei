@@ -12,4 +12,5 @@ export interface GameState {
   level: number;
   targetPoint: Point | null;
   angle?: number; // For ray rotation
+  showGrid: boolean; // Control grid visibility
 }

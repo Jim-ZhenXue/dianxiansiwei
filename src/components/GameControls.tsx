@@ -6,9 +6,11 @@ interface GameControlsProps {
   onModeChange: (mode: GameMode) => void;
   score: number;
   level: number;
+  showGrid: boolean;
+  onToggleGrid: () => void;
 }
 
-export function GameControls({ currentMode, onModeChange, score, level }: GameControlsProps) {
+export function GameControls({ currentMode, onModeChange, score, level, showGrid, onToggleGrid }: GameControlsProps) {
   return (
     <div className="bg-white p-4 rounded-lg shadow-lg space-y-4">
       {/* Mode Selection */}
@@ -34,6 +36,21 @@ export function GameControls({ currentMode, onModeChange, score, level }: GameCo
             </button>
           ))}
         </div>
+      </div>
+
+      {/* Grid Toggle */}
+      <div className="space-y-2">
+        <h2 className="text-lg font-semibold text-gray-700">显示设置</h2>
+        <button
+          onClick={onToggleGrid}
+          className={`w-full py-2 px-4 rounded-md transition-colors ${
+            showGrid
+              ? 'bg-blue-500 text-white'
+              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+          }`}
+        >
+          {showGrid ? '隐藏网格' : '显示网格'}
+        </button>
       </div>
 
       {/* Stats */}
